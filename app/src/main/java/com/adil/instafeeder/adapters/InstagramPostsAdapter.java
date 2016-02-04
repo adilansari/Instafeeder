@@ -1,6 +1,7 @@
 package com.adil.instafeeder.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +20,7 @@ import java.util.List;
  */
 public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
 
-    public InstagramPostsAdapter(Context context, int textViewResourceId) {
-        super(context, textViewResourceId);
-    }
+    private static final String TAG = InstagramPostsAdapter.class.getSimpleName();
 
     public InstagramPostsAdapter(Context context, int resource, List<InstagramPost> items) {
         super(context, resource, items);
@@ -38,15 +37,21 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
 
         InstagramPost post = getItem(position);
         TextView tvUserName = (TextView) v.findViewById(R.id.username);
+        TextView tvTime = (TextView) v.findViewById(R.id.timeDiff);
+
         ImageView imgView = (ImageView) v.findViewById(R.id.ivPhoto);
+
         TextView tvLikesCount = (TextView) v.findViewById(R.id.likesCount);
         TextView tvCaption = (TextView) v.findViewById(R.id.tvCaption);
 
         tvUserName.setText(post.user);
+        tvTime.setText("4 H");
         imgView.setImageResource(0);
         Picasso.with(getContext()).load(post.imageUrl).into(imgView);
         tvCaption.setText(post.caption);
-        tvLikesCount.setText(post.likesCount);
+        tvLikesCount.setText(Integer.toString(post.likesCount));
+
+        Log.i(TAG, "likesCount: " + post.likesCount + " caption: " + post.caption + " commentsCount: " + post.commentsCount + " user: " + post.user);
 
         return v;
     }

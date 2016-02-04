@@ -1,7 +1,5 @@
 package com.adil.instafeeder.models;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,8 +34,11 @@ public class InstagramPost {
         post.commentsCount = comments.getInt("count");
 
         JSONObject caption = jsonObject.optJSONObject("caption");
-        if (caption != null)
+        if (caption != null) {
             post.caption = caption.getString("text");
+        } else {
+            post.caption = "bad caption";
+        }
 
         JSONObject likes = jsonObject.getJSONObject("likes");
         post.likesCount = likes.getInt("count");
@@ -50,7 +51,7 @@ public class InstagramPost {
         JSONObject images = jsonObject.getJSONObject("images");
         post.imageUrl = images.getJSONObject("standard_resolution").getString("url");
 
-        Log.i(TAG, "likesCount: "+ post.likesCount + "caption: " + post.caption + "commentsCount: "+ post.commentsCount + "mediaId" + post.mediaId);
+//        Log.i(TAG, "likesCount: "+ post.likesCount + "caption: " + post.caption + "commentsCount: "+ post.commentsCount + "mediaId" + post.mediaId);
 
         return post;
     }
@@ -71,13 +72,9 @@ public class InstagramPost {
             }
 
             InstagramPost post = fromJson(jsonObject);
-
-            if (post != null) {
+            if (post != null)
                 instagramPosts.add(post);
-            }
         }
-
-
         return instagramPosts;
     }
 

@@ -2,6 +2,7 @@ package com.adil.instafeeder.network;
 
 import android.util.Log;
 
+import com.adil.instafeeder.activities.PhotoStreamActivity;
 import com.adil.instafeeder.models.InstagramPost;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -33,10 +34,11 @@ public class InstagramApiClient {
                 Log.d(TAG, response.toString());
                 try {
                     instagramPosts = InstagramPost.fromJson(response.getJSONArray("data"));
+                    Log.d(TAG, "loaded "+ instagramPosts.size()+ " items");
+                    PhotoStreamActivity.postsAdapter.addAll(instagramPosts);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
 
             @Override
@@ -44,8 +46,6 @@ public class InstagramApiClient {
                 Log.e(TAG, "http failure", throwable);
             }
         });
-
-        Log.i(TAG, "updating list of popular photos");
     }
 
     private String getUrl(String endoint){

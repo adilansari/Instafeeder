@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class InstagramPost {
     public String mediaId;
-    public String user;
+    public InstagramUser user;
     public String imageUrl;
     public List<InstagramComment> comments;
     public String caption;
@@ -45,8 +45,8 @@ public class InstagramPost {
 
         post.mediaId = jsonObject.getString("id");
 
-        JSONObject user = jsonObject.getJSONObject("user");
-        post.user = user.getString("username");
+        post.user = InstagramUser.fromJson(jsonObject.getJSONObject("user"));
+        post.createdTime = jsonObject.getLong("created_time") * 1000;
 
         JSONObject images = jsonObject.getJSONObject("images");
         post.imageUrl = images.getJSONObject("standard_resolution").getString("url");

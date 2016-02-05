@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.adil.instafeeder.R;
 import com.adil.instafeeder.models.InstagramPost;
+import com.adil.instafeeder.utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -40,14 +41,19 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
         TextView tvTime = (TextView) v.findViewById(R.id.timeDiff);
 
         ImageView imgView = (ImageView) v.findViewById(R.id.ivPhoto);
+        ImageView imgProfile = (ImageView) v.findViewById(R.id.ivProfilePicture);
 
         TextView tvLikesCount = (TextView) v.findViewById(R.id.likesCount);
         TextView tvCaption = (TextView) v.findViewById(R.id.tvCaption);
 
-        tvUserName.setText(post.user);
-        tvTime.setText("4 H");
+        tvUserName.setText(post.user.username);
+        tvTime.setText(Utils.getRelativeTimeSpan(post.createdTime));
+        imgProfile.setImageResource(0);
+        Picasso.with(getContext()).load(post.user.imageUrl).into(imgProfile);
+
         imgView.setImageResource(0);
         Picasso.with(getContext()).load(post.imageUrl).into(imgView);
+
         tvCaption.setText(post.caption);
         tvLikesCount.setText(Integer.toString(post.likesCount));
 

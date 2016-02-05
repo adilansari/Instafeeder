@@ -55,7 +55,7 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
         Picasso.with(getContext()).load(post.imageUrl).into(imgView);
 
         tvCaption.setText(post.caption);
-        tvLikesCount.setText(Integer.toString(post.likesCount));
+        tvLikesCount.setText(Utils.templatifyLikesCount(post.likesCount));
 
         Log.i(TAG, "likesCount: " + post.likesCount + " caption: " + post.caption + " commentsCount: " + post.commentsCount + " user: " + post.user);
 

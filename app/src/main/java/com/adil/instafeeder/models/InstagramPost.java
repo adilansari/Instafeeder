@@ -46,7 +46,7 @@ public class InstagramPost {
         post.mediaId = jsonObject.getString("id");
 
         post.user = InstagramUser.fromJson(jsonObject.getJSONObject("user"));
-        post.createdTime = jsonObject.getLong("created_time") * 1000;
+        post.createdTime = jsonObject.getLong("created_time");
 
         JSONObject images = jsonObject.getJSONObject("images");
         post.imageUrl = images.getJSONObject("standard_resolution").getString("url");

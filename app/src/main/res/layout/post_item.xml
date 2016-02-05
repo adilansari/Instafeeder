@@ -3,22 +3,40 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/usernameLinearLayout"
+        android:id="@+id/profileRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfilePicture"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left" />
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:textColor="#2154b2"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/timeDiff"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"/>
+            android:gravity="end"
+            android:paddingRight="10dp"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:layout_gravity="center_vertical|right"/>
 
     </LinearLayout>
 
@@ -26,27 +44,54 @@
         android:id="@+id/ivPhoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameLinearLayout"
+        android:layout_below="@+id/profileRow"
         android:layout_alignParentStart="true"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:minHeight="50dp" />
 
-    <TextView
-        android:id="@+id/likesCount"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/likesLinearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:text="likes"
-        android:layout_below="@+id/ivPhoto"/>
+        android:orientation="horizontal"
+        android:layout_below="@+id/ivPhoto"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/heartIcon"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#2154b2"
+            android:layout_marginLeft="12dp"
+            android:text="♥"/>
+
+        <TextView
+            android:id="@+id/likesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#2154b2"
+            android:layout_marginLeft="6dp"
+            android:text="likesCount"/>
+
+        <TextView
+            android:id="@+id/likesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="likes"
+            android:layout_marginLeft="6dp"
+            android:textColor="#2154b2"/>
+        </LinearLayout>
 
     <TextView
         android:id="@+id/tvCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Caption"
-        android:textSize="20sp"
-        android:layout_below="@+id/likesCount"
+        android:textSize="14sp"
+        android:layout_below="@+id/likesLinearLayout"
         android:layout_alignParentStart="true"
         android:maxLines="3"
         android:ellipsize="end" />

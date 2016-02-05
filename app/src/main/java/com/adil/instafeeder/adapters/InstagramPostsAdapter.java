@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import uk.co.deanwild.flowtextview.FlowTextView;
+
 /**
  * Created by adil on 2/3/16.
  */
@@ -44,7 +46,7 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
         ImageView imgProfile = (ImageView) v.findViewById(R.id.ivProfilePicture);
 
         TextView tvLikesCount = (TextView) v.findViewById(R.id.likesCount);
-        TextView tvCaption = (TextView) v.findViewById(R.id.tvCaption);
+        FlowTextView flowCaption = (FlowTextView) v.findViewById(R.id.flowCaption);
 
         tvUserName.setText(post.user.username);
         tvTime.setText(Utils.getRelativeTimeSpan(post.createdTime));
@@ -54,7 +56,8 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
         imgView.setImageResource(0);
         Picasso.with(getContext()).load(post.imageUrl).into(imgView);
 
-        tvCaption.setText(post.caption);
+        flowCaption.setText(post.caption);
+        flowCaption.setTextSize(24.0f);
         tvLikesCount.setText(Utils.templatifyLikesCount(post.likesCount));
 
         Log.i(TAG, "likesCount: " + post.likesCount + " caption: " + post.caption + " commentsCount: " + post.commentsCount + " user: " + post.user);

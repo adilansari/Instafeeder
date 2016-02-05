@@ -69,28 +69,25 @@
 
        </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvCaptionUsername"
+    <uk.co.deanwild.flowtextview.FlowTextView
+        android:id="@+id/flowCaption"
         android:layout_below="@+id/likesLinearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="username"
-        android:textColor="#2154b2"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
-        />
-
-    <TextView
-        android:id="@+id/tvCaption"
-        android:layout_below="@+id/likesLinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Caption"
-        android:layout_toEndOf="@+id/tvCaptionUsername"
-        android:textSize="12sp"
         android:maxLines="3"
-        android:ellipsize="end" />
+        android:ellipsize="end">
+
+        <TextView
+            android:id="@+id/tvCaptionUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:textColor="#2154b2"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" />
+
+    </uk.co.deanwild.flowtextview.FlowTextView>
+
 </RelativeLayout>

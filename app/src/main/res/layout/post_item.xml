@@ -56,41 +56,58 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/ivPhoto"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp">
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/likesCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#2154b2"
-            android:layout_marginLeft="6dp"
             android:text="likesCount"/>
 
        </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvCaptionUsername"
-        android:layout_below="@+id/likesLinearLayout"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearCaption"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="username"
-        android:textColor="#2154b2"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
-        />
+        android:layout_below="@+id/likesLinearLayout"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:id="@+id/tvCaptionUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:textColor="#2154b2"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:paddingRight="6dp"
+            />
+
+        <TextView
+            android:id="@+id/tvCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Caption"
+            android:layout_toEndOf="@+id/tvCaptionUsername"
+            android:textSize="12sp"
+            android:maxLines="3"
+            android:ellipsize="end" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tvCaption"
-        android:layout_below="@+id/likesLinearLayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvCommentsCount"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Caption"
-        android:layout_toEndOf="@+id/tvCaptionUsername"
+        android:layout_below="@+id/linearCaption"
         android:textSize="12sp"
-        android:maxLines="3"
-        android:ellipsize="end" />
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"/>
+
+
 </RelativeLayout>

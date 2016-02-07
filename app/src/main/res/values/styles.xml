@@ -2,10 +2,77 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.DefaultFont" parent="android:TextAppearance">
+        <item name="fontPath">fonts/SourceSansPro-Light.ttf</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="SmallText" parent="@style/TextAppearance.DefaultFont">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SmallText.BoldBlue">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorBlueText</item>
+    </style>
+
+    <style name="SmallText.RegularGrey">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/colorGreyText</item>
+    </style>
+
+    <style name="SmallText.RegularDark">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/colorDarkText</item>
+    </style>
+
+    <style name="ProfileSection" parent="@style/TextAppearance.DefaultFont">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ProfileSection.Username">
+        <item name="android:textColor">@color/colorBlueText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="ProfileSection.RelativeTime">
+        <item name="android:textColor">@color/colorGreyText</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_gravity">center_vertical|right</item>
+    </style>
+
+    <style name="LikeCountSection" parent="@style/SmallText.BoldBlue">
+
+    </style>
+
+    <style name="CaptionSectionUsername" parent="@style/SmallText.BoldBlue">
+        <item name="android:text">username</item>
+    </style>
+
+    <style name="CaptionSectionCaption" parent="@style/SmallText.RegularDark">
+        <item name="android:text">caption</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="CommentsCount" parent="@style/SmallText.RegularGrey">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="LastCommentUsername" parent="@style/SmallText.BoldBlue">
+        <item name="android:text">username</item>
+    </style>
+
+    <style name="LastCommentText" parent="@style/SmallText.RegularDark">
+        <item name="android:text">comment</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
     </style>
 
 </resources>

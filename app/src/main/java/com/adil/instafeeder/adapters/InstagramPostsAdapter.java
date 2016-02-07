@@ -1,6 +1,8 @@
 package com.adil.instafeeder.adapters;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.adil.instafeeder.R;
+import com.adil.instafeeder.activities.CommentsDialog;
 import com.adil.instafeeder.models.InstagramComment;
 import com.adil.instafeeder.models.InstagramPost;
 import com.adil.instafeeder.utils.Utils;
@@ -50,6 +53,7 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
         }
 
         InstagramPost post = getItem(position);
+        final String mediaId = post.mediaId;
 
         tvUserName = (TextView) v.findViewById(R.id.username);
         tvUserName.setText(post.user.username);
@@ -78,20 +82,29 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
         tvCommentsCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showCommentsDialog(mediaId);
             }
         });
         tvCommentsCount.setText(Utils.templatifyCommentsCount(post.commentsCount));
 
         lastComment = post.fetchLastComment();
-        tvLastCommentUsername = (TextView) v.findViewById(R.id.tvLastCommentUser);
-        tvLastCommentUsername.setText(lastComment.user.username);
+        if (lastComment != null) {
+            tvLastCommentUsername = (TextView) v.findViewById(R.id.tvLastCommentUser);
+            tvLastCommentUsername.setText(lastComment.user.username);
 
-        tvLastCommentText = (TextView) v.findViewById(R.id.tvLastCommentText);
-        tvLastCommentText.setText(lastComment.text);
+            tvLastCommentText = (TextView) v.findViewById(R.id.tvLastCommentText);
+            tvLastCommentText.setText(lastComment.text);
+        }
 
-        Log.i(TAG, "likesCount: " + post.likesCount + " caption: " + post.caption + " commentsCount: " + post.commentsCount + " user: " + post.user);
+        Log.i(TAG, "likesCount: " + post.likesCount + " mediaId: " + post.mediaId+ " commentsCount: " + post.commentsCount + " user: " + post.user);
 
         return v;
+    }
+
+    private void showCommentsDialog(String mediaId){
+        FragmentActivity activity = (FragmentActivity) getContext();
+        FragmentManager fm = activity.getSupportFragmentManager();
+        CommentsDialog commentsDialog = CommentsDialog.newInstance(mediaId);
+        commentsDialog.show(fm, "dialog");
     }
 }

@@ -35,7 +35,9 @@ public class InstagramApiClient {
                 try {
                     instagramPosts = InstagramPost.fromJson(response.getJSONArray("data"));
                     Log.d(TAG, "loaded "+ instagramPosts.size()+ " items");
+                    PhotoStreamActivity.postsAdapter.clear();
                     PhotoStreamActivity.postsAdapter.addAll(instagramPosts);
+                    PhotoStreamActivity.swipeContainer.setRefreshing(false);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

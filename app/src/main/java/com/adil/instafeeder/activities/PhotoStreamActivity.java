@@ -1,6 +1,7 @@
 package com.adil.instafeeder.activities;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
@@ -15,7 +16,8 @@ public class PhotoStreamActivity extends AppCompatActivity {
 
     private ArrayList<InstagramPost> instagramPosts;
     public static InstagramPostsAdapter postsAdapter;
-    InstagramApiClient instagramClient = new InstagramApiClient();
+    public static SwipeRefreshLayout swipeContainer;
+    private InstagramApiClient instagramClient = new InstagramApiClient();
     private static final String TAG = PhotoStreamActivity.class.getSimpleName();
 
     @Override
@@ -30,5 +32,17 @@ public class PhotoStreamActivity extends AppCompatActivity {
         lvPosts.setAdapter(postsAdapter);
 
         instagramClient.fetchPopularPhotos();
+
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                instagramClient.fetchPopularPhotos();
+            }
+        });
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
 }

@@ -1,7 +1,6 @@
 package com.adil.instafeeder.utils;
 
 import android.text.format.DateUtils;
-import android.util.Log;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
@@ -16,7 +15,7 @@ import java.util.TimeZone;
 public class Utils {
 
     public static String getRelativeTimeSpan(long time){
-        Log.d("TIME", String.valueOf(time) + " "+ System.currentTimeMillis()+" "+localTimeStamp());
+//        Log.d("TIME", String.valueOf(time) + " "+ System.currentTimeMillis()+" "+localTimeStamp());
 
         String relativeTime  = (String) DateUtils.getRelativeTimeSpanString(time*1000, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE);
 
@@ -59,7 +58,6 @@ public class Utils {
         Date date = new Date();
         DateFormat localDf = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL);
         localDf.setTimeZone(TimeZone.getTimeZone("GMT"));
-        Log.d("DATE", localDf.format(date));
 
         return calendar.getTimeInMillis();
     }

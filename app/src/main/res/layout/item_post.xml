@@ -52,6 +52,7 @@
         style="@style/LikeCountSection"
         android:layout_below="@+id/ivPhoto"
         android:paddingLeft="8dp"
+        android:paddingTop="8dp"
         android:text="likesCount" />
 
 
@@ -86,7 +87,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearCaption"
+        android:clickable="true"
         style="@style/CommentsCount"
+        android:paddingTop="8dp"
         android:paddingLeft="8dp" />
 
     <LinearLayout

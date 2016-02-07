@@ -26,7 +26,7 @@ public class PhotoStreamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_photo_stream);
 
         instagramPosts = new ArrayList<>();
-        postsAdapter = new InstagramPostsAdapter(this, R.layout.post_item, instagramPosts);
+        postsAdapter = new InstagramPostsAdapter(this, R.layout.item_post, instagramPosts);
 
         ListView lvPosts = (ListView) findViewById(R.id.lvPhotos);
         lvPosts.setAdapter(postsAdapter);
@@ -44,5 +44,9 @@ public class PhotoStreamActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+    }
+
+    public void onAllCommentsClick(){
+
     }
 }

@@ -32,7 +32,7 @@ public class InstagramPost {
 
         JSONObject comments = jsonObject.getJSONObject("comments");
         post.commentsCount = comments.getInt("count");
-        post.comments = InstagramComment.fromJSON(comments.getJSONArray("data"));
+        post.comments = InstagramComment.fromJson(comments.getJSONArray("data"));
 
         JSONObject caption = jsonObject.optJSONObject("caption");
         if (caption != null) {
@@ -51,8 +51,6 @@ public class InstagramPost {
 
         JSONObject images = jsonObject.getJSONObject("images");
         post.imageUrl = images.getJSONObject("standard_resolution").getString("url");
-
-//        Log.i(TAG, "likesCount: "+ post.likesCount + "caption: " + post.caption + "commentsCount: "+ post.commentsCount + "mediaId" + post.mediaId);
 
         return post;
     }
@@ -90,7 +88,7 @@ public class InstagramPost {
     }
 
     public InstagramComment fetchLastComment(){
-        if (this.comments == null) {
+        if (this.comments == null || this.comments.isEmpty()) {
             return null;
         }
         return this.comments.get(this.comments.size()-1);

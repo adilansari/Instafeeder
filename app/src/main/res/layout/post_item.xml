@@ -83,6 +83,7 @@
             android:textColor="#2154b2"
             android:textSize="12sp"
             android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.FontPath"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:paddingRight="6dp"

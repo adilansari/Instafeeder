@@ -35,7 +35,7 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
 
         if (v == null) {
             LayoutInflater li = LayoutInflater.from(getContext());
-            v = li.inflate(R.layout.post_item, null);
+            v = li.inflate(R.layout.item_post, null);
         }
 
         InstagramPost post = getItem(position);
@@ -64,6 +64,12 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
         tvCaption.setText(post.caption);
 
         TextView tvCommentsCount = (TextView) v.findViewById(R.id.tvCommentsCount);
+        tvCommentsCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         tvCommentsCount.setText(Utils.templatifyCommentsCount(post.commentsCount));
 
         lastComment = post.fetchLastComment();

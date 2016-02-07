@@ -8,4 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextAppearance.FontPath.Light" parent="android:TextAppearance">
+        <item name="fontPath">fonts/SourceSansPro-Light.ttf</item>
+    </style>
+    
+    <style name="ProfileSection" parent="TextAppearance.FontPath.Light">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="ProfileSection.Username" parent="@style/ProfileSection">
+        <item name="android:textColor">@color/colorBlueText</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ProfileSection.RelativeTime" parent="@style/ProfileSection">
+        <item name="android:textColor">@color/colorGreyText</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

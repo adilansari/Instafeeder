@@ -16,7 +16,7 @@ public class InstagramComment implements Comparable<InstagramComment> {
     public int createdTime;
     public String text;
 
-    public static InstagramComment fromJSON(JSONObject jsonObject) throws JSONException {
+    public static InstagramComment fromJson(JSONObject jsonObject) throws JSONException {
         if (jsonObject == null)
             return null;
 
@@ -28,14 +28,14 @@ public class InstagramComment implements Comparable<InstagramComment> {
         return comment;
     }
 
-    public static List<InstagramComment> fromJSON(JSONArray jsonArray) throws JSONException {
+    public static List<InstagramComment> fromJson(JSONArray jsonArray) throws JSONException {
         if (jsonArray == null)
             return null;
 
         List<InstagramComment> instagramComments = new ArrayList<>();
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            instagramComments.add(fromJSON(jsonArray.getJSONObject(i)));
+            instagramComments.add(fromJson(jsonArray.getJSONObject(i)));
         }
 
         Collections.sort(instagramComments);

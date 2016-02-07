@@ -23,6 +23,12 @@ public class CommentsAdapter extends ArrayAdapter<InstagramComment>{
 
     public static final String TAG = CommentsAdapter.class.getSimpleName();
 
+    private InstagramComment comment;
+    private ImageView imgProfilePicture;
+    private TextView tvCommentUsername;
+    private TextView tvCommentRelativeTime;
+    private TextView tvComment;
+
     public CommentsAdapter(Context context, int resource, List<InstagramComment> objects) {
         super(context, resource, objects);
     }
@@ -36,19 +42,19 @@ public class CommentsAdapter extends ArrayAdapter<InstagramComment>{
             v = li.inflate(R.layout.comment, null);
         }
 
-        InstagramComment comment = getItem(position);
+        comment = getItem(position);
 
-        ImageView imgProfilePicture = (ImageView) v.findViewById(R.id.ivCommentUserPicture);
+        imgProfilePicture = (ImageView) v.findViewById(R.id.ivCommentUserPicture);
         imgProfilePicture.setImageResource(0);
         Picasso.with(getContext()).load(comment.user.imageUrl).into(imgProfilePicture);
 
-        TextView tvCommentUsername = (TextView) v.findViewById(R.id.tvCommentUsername);
+        tvCommentUsername = (TextView) v.findViewById(R.id.tvCommentUsername);
         tvCommentUsername.setText(comment.user.username);
 
-        TextView tvCommentRelativeTime = (TextView) v.findViewById(R.id.tvCommentRelativeTime);
+        tvCommentRelativeTime = (TextView) v.findViewById(R.id.tvCommentRelativeTime);
         tvCommentRelativeTime.setText(Utils.getRelativeTimeSpan(comment.createdTime));
 
-        TextView tvComment = (TextView) v.findViewById(R.id.tvCommentText);
+        tvComment = (TextView) v.findViewById(R.id.tvCommentText);
         tvComment.setText(comment.text);
 
         Log.v(TAG, "user: " + comment.user.username + " comment: " + comment.text);

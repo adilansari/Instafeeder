@@ -12,23 +12,29 @@ import com.adil.instafeeder.network.InstagramApiClient;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class PhotoStreamActivity extends AppCompatActivity {
+
+    private static final String TAG = PhotoStreamActivity.class.getSimpleName();
 
     private ArrayList<InstagramPost> instagramPosts;
     public static InstagramPostsAdapter postsAdapter;
     public static SwipeRefreshLayout swipeContainer;
     private InstagramApiClient instagramClient = new InstagramApiClient();
-    private static final String TAG = PhotoStreamActivity.class.getSimpleName();
+
+    @Bind(R.id.lvPhotos) ListView lvPosts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_stream);
+        ButterKnife.bind(this);
 
         instagramPosts = new ArrayList<>();
         postsAdapter = new InstagramPostsAdapter(this, R.layout.item_post, instagramPosts);
 
-        ListView lvPosts = (ListView) findViewById(R.id.lvPhotos);
         lvPosts.setAdapter(postsAdapter);
 
         instagramClient.fetchPopularPhotos();
@@ -46,7 +52,9 @@ public class PhotoStreamActivity extends AppCompatActivity {
                 android.R.color.holo_red_light);
     }
 
-    public void onAllCommentsClick(){
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 }

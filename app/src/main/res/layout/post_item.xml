@@ -109,5 +109,13 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"/>
 
+    <ListView
+        android:id="@+id/lvMinifiedComments"
+        android:layout_below="@+id/tvCommentsCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true">
+    </ListView>
+
 
 </RelativeLayout>

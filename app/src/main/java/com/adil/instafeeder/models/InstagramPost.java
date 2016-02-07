@@ -32,6 +32,7 @@ public class InstagramPost {
 
         JSONObject comments = jsonObject.getJSONObject("comments");
         post.commentsCount = comments.getInt("count");
+        post.comments = InstagramComment.fromJSON(comments.getJSONArray("data"));
 
         JSONObject caption = jsonObject.optJSONObject("caption");
         if (caption != null) {
@@ -78,4 +79,13 @@ public class InstagramPost {
         return instagramPosts;
     }
 
+    public List<InstagramComment> fetchLastTwoComments(){
+        List<InstagramComment> comments = new ArrayList<>();
+
+        for (int i = this.comments.size() - 1; i >=0 && i >= this.comments.size()-2; i--){
+            comments.add(this.comments.get(i));
+        }
+
+        return comments;
+    }
 }

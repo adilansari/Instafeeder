@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.adil.instafeeder.R;
+import com.adil.instafeeder.models.InstagramComment;
 import com.adil.instafeeder.models.InstagramPost;
 import com.adil.instafeeder.utils.Utils;
 import com.squareup.picasso.Picasso;
@@ -23,7 +23,7 @@ import java.util.List;
 public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
 
     private static final String TAG = InstagramPostsAdapter.class.getSimpleName();
-    private MinifiedCommentsAdapter commentsAdapter;
+    private InstagramComment lastComment;
 
     public InstagramPostsAdapter(Context context, int resource, List<InstagramPost> items) {
         super(context, resource, items);
@@ -66,9 +66,12 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
         TextView tvCommentsCount = (TextView) v.findViewById(R.id.tvCommentsCount);
         tvCommentsCount.setText(Utils.templatifyCommentsCount(post.commentsCount));
 
-        commentsAdapter = new MinifiedCommentsAdapter(getContext(), R.layout.minified_comment, post.fetchLastTwoComments());
-        ListView lvComments = (ListView) v.findViewById(R.id.lvMinifiedComments);
-        lvComments.setAdapter(commentsAdapter);
+        lastComment = post.fetchLastComment();
+        TextView tvLastCommentUsername = (TextView) v.findViewById(R.id.tvLastCommentUser);
+        tvLastCommentUsername.setText(lastComment.user.username);
+
+        TextView tvLastCommentText = (TextView) v.findViewById(R.id.tvLastCommentText);
+        tvLastCommentText.setText(lastComment.text);
 
         Log.i(TAG, "likesCount: " + post.likesCount + " caption: " + post.caption + " commentsCount: " + post.commentsCount + " user: " + post.user);
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/profileRow"
@@ -22,11 +23,7 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textStyle="bold"
-            android:typeface="serif"
-            android:textColor="#2154b2"
-            android:textSize="15sp" />
+            style="@style/ProfileSection.Username"/>
 
         <TextView
             android:id="@+id/timeDiff"
@@ -34,9 +31,7 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:paddingRight="10dp"
-            android:textStyle="bold"
-            android:typeface="serif"
-            android:layout_gravity="center_vertical|right"/>
+            style="@style/ProfileSection.RelativeTime"/>
 
     </LinearLayout>
 
@@ -50,28 +45,21 @@
         android:scaleType="fitXY"
         android:minHeight="50dp" />
 
-    <LinearLayout
-        android:id="@+id/likesLinearLayout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/likesCount"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        style="@style/LikeCountSection"
         android:layout_below="@+id/ivPhoto"
-        android:padding="8dp">
+        android:paddingLeft="8dp"
+        android:text="likesCount" />
 
-        <TextView
-            android:id="@+id/likesCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#2154b2"
-            android:text="likesCount"/>
-
-       </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearCaption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/likesLinearLayout"
+        android:layout_below="@+id/likesCount"
         android:paddingLeft="8dp"
         android:paddingRight="8dp">
 
@@ -79,24 +67,17 @@
             android:id="@+id/tvCaptionUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="username"
-            android:textColor="#2154b2"
-            android:textSize="12sp"
-            android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:paddingRight="6dp"
-            />
+            style="@style/CaptionSectionUsername"
+            android:paddingRight="6dp" />
 
         <TextView
             android:id="@+id/tvCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Caption"
-            android:layout_toEndOf="@+id/tvCaptionUsername"
-            android:textSize="12sp"
-            android:maxLines="3"
-            android:ellipsize="end" />
+            style="@style/CaptionSectionCaption"
+            android:layout_toEndOf="@+id/tvCaptionUsername"/>
 
     </LinearLayout>
 
@@ -105,17 +86,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearCaption"
-        android:textSize="12sp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"/>
+        style="@style/CommentsCount"
+        android:paddingLeft="8dp" />
 
-    <ListView
-        android:id="@+id/lvMinifiedComments"
+    <LinearLayout
+        android:id="@+id/linearLastComments"
         android:layout_below="@+id/tvCommentsCount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true">
-    </ListView>
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/tvLastCommentUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/LastCommentUsername"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:paddingRight="6dp" />
+
+        <TextView
+            android:id="@+id/tvLastCommentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tvLastCommentUser"
+            style="@style/LastCommentText"/>
+
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -88,4 +88,11 @@ public class InstagramPost {
 
         return comments;
     }
+
+    public InstagramComment fetchLastComment(){
+        if (this.comments == null) {
+            return null;
+        }
+        return this.comments.get(this.comments.size()-1);
+    }
 }

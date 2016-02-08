@@ -9,16 +9,17 @@
     </style>
 
     <style name="TextAppearance.DefaultFont" parent="android:TextAppearance">
-        <item name="fontPath">HelveticaNeue.ttf</item>
-        <item name="android:typeface">sans</item>
+        <!--<item name="fontPath">fonts/alte-haas-grotesk/AlteHaasGroteskRegular.ttf</item>-->
+        <!--<item name="fontPath">fonts/roboto/Roboto-Regular.ttf</item>-->
     </style>
+
 
     <style name="SmallText" parent="@style/TextAppearance.DefaultFont">
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="SmallText.BoldBlue">
-        <item name="android:textStyle">bold</item>
+        <item name="fontPath">fonts/alte-haas-grotesk/AlteHaasGroteskBold.ttf</item>
         <item name="android:textColor">@color/colorBlueText</item>
     </style>
 
@@ -37,8 +38,9 @@
     </style>
 
     <style name="ProfileSection.Username">
-        <item name="android:textColor">@color/colorBlueText</item>
+        <!--<item name="fontPath">fonts/alte-haas-grotesk/AlteHaasGroteskBold.ttf</item>-->
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorBlueText</item>
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 
@@ -84,7 +86,7 @@
     <style name="DialogWindowTitleText" parent="@android:style/TextAppearance.DialogWindowTitle">
         <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorOffWhite</item>
     </style>
 
     <style name="AppDialogTheme" parent="Theme.AppCompat.Light.Dialog">
@@ -100,6 +102,7 @@
     </style>
 
     <style name="CommentsDialog.Username">
+        <item name="fontPath">fonts/alte-haas-grotesk/AlteHaasGroteskBold.ttf</item>
         <item name="android:textColor">@color/colorBlueText</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -112,6 +115,15 @@
     <style name="CommentsDialog.Text">
         <item name="android:textColor">@color/colorDarkText</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ActionBarTitle">
+        <item name="android:layout_gravity">center|center_vertical</item>
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textColor">@color/colorOffWhite</item>
+        <item name="android:textSize">48sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontPath">fonts/Billabong.ttf</item>
     </style>
 
 

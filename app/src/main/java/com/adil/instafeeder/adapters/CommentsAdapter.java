@@ -16,6 +16,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by adil on 2/6/16.
  */
@@ -24,10 +27,17 @@ public class CommentsAdapter extends ArrayAdapter<InstagramComment>{
     public static final String TAG = CommentsAdapter.class.getSimpleName();
 
     private InstagramComment comment;
-    private ImageView imgProfilePicture;
-    private TextView tvCommentUsername;
-    private TextView tvCommentRelativeTime;
-    private TextView tvComment;
+
+    public static class ViewHolder {
+        @Bind(R.id.ivCommentUserPicture) ImageView imgProfilePicture;
+        @Bind(R.id.tvCommentUsername) TextView tvCommentUsername;
+        @Bind(R.id.tvCommentRelativeTime) TextView tvCommentRelativeTime;
+        @Bind(R.id.tvCommentText) TextView tvComment;
+
+        public ViewHolder(View view){
+            ButterKnife.bind(this, view);
+        }
+    }
 
     public CommentsAdapter(Context context, int resource, List<InstagramComment> objects) {
         super(context, resource, objects);
@@ -36,26 +46,27 @@ public class CommentsAdapter extends ArrayAdapter<InstagramComment>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         View v = convertView;
+        ViewHolder holder;
 
         if (v == null){
             LayoutInflater li = LayoutInflater.from(getContext());
             v = li.inflate(R.layout.comment, null);
+            holder = new ViewHolder(v);
+            v.setTag(holder);
+        } else {
+            holder = (ViewHolder) v.getTag();
         }
 
         comment = getItem(position);
 
-        imgProfilePicture = (ImageView) v.findViewById(R.id.ivCommentUserPicture);
-        imgProfilePicture.setImageResource(0);
-        Picasso.with(getContext()).load(comment.user.imageUrl).into(imgProfilePicture);
+        holder.imgProfilePicture.setImageResource(0);
+        Picasso.with(getContext()).load(comment.user.imageUrl).into(holder.imgProfilePicture);
 
-        tvCommentUsername = (TextView) v.findViewById(R.id.tvCommentUsername);
-        tvCommentUsername.setText(comment.user.username);
+        holder.tvCommentUsername.setText(comment.user.username);
 
-        tvCommentRelativeTime = (TextView) v.findViewById(R.id.tvCommentRelativeTime);
-        tvCommentRelativeTime.setText(Utils.getRelativeTimeSpan(comment.createdTime));
+        holder.tvCommentRelativeTime.setText(Utils.getRelativeTimeSpan(comment.createdTime));
 
-        tvComment = (TextView) v.findViewById(R.id.tvCommentText);
-        tvComment.setText(comment.text);
+        holder.tvComment.setText(comment.text);
 
         Log.v(TAG, "user: " + comment.user.username + " comment: " + comment.text);
 

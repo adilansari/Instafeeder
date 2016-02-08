@@ -45,8 +45,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
-- Styling the layouts.
-- Picking up the right theme (colors/fonts)
+- Styling the dialog fragment title.
+- Picking up the right theme (colors/fonts).
+- Working with flow text view.
 
 ## Open-source libraries used
 

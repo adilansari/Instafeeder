@@ -9,7 +9,7 @@
     </style>
 
     <style name="TextAppearance.DefaultFont" parent="android:TextAppearance">
-        <item name="fontPath">fonts/SourceSansPro-Light.ttf</item>
+        <item name="fontPath">HelveticaNeue.ttf</item>
         <item name="android:typeface">sans</item>
     </style>
 
@@ -78,7 +78,6 @@
 
     <style name="DialogWindowTitle" parent="Base.DialogWindowTitle.AppCompat">
         <item name="android:background">@color/colorPrimary</item>
-        <item name="android:text">STYLEDCO</item>
         <item name="android:textAppearance">@style/DialogWindowTitleText</item>
     </style>
 

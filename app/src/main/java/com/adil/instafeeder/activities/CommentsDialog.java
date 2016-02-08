@@ -16,15 +16,17 @@ import com.adil.instafeeder.network.InstagramApiClient;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by adil on 2/6/16.
- */
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class CommentsDialog extends DialogFragment{
 
     public static CommentsAdapter commentsAdapter;
     private InstagramApiClient instagramApiClient;
     private List<InstagramComment> instagramComments;
     private String mediaId;
+
+    @Bind(R.id.lvComments) ListView lvComments;
 
     public CommentsDialog() {
     }
@@ -41,7 +43,9 @@ public class CommentsDialog extends DialogFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState){
         getDialog().setTitle("COMMENTS");
-        return inflater.inflate(R.layout.fragment_comment, container);
+        View view = inflater.inflate(R.layout.fragment_comment, container);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
@@ -51,10 +55,15 @@ public class CommentsDialog extends DialogFragment{
         instagramComments = new ArrayList<>();
         commentsAdapter = new CommentsAdapter(getContext(), R.layout.comment, instagramComments);
 
-        ListView lvComments = (ListView) view.findViewById(R.id.lvComments);
         lvComments.setAdapter(commentsAdapter);
 
         instagramApiClient = new InstagramApiClient();
         instagramApiClient.fetchComments(mediaId);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }

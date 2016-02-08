@@ -23,6 +23,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static com.adil.instafeeder.R.drawable.image_download_progress;
+
 /**
  * Created by adil on 2/3/16.
  */
@@ -75,7 +77,7 @@ public class InstagramPostsAdapter extends ArrayAdapter<InstagramPost>{
         holder.tvTime.setText(Utils.getRelativeTimeSpan(post.createdTime));
 
         holder.imgProfile.setImageResource(0);
-        Picasso.with(getContext()).load(post.user.imageUrl).into(holder.imgProfile);
+        Picasso.with(getContext()).load(post.user.imageUrl).placeholder(image_download_progress).into(holder.imgProfile);
 
         Picasso.with(getContext()).load(post.imageUrl).into(holder.imgView);
 
